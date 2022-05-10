@@ -154,31 +154,42 @@ UIAspectRatioConstraint_9.AspectRatio = 2.162
 UIAspectRatioConstraint_10.Parent = topbar
 UIAspectRatioConstraint_10.AspectRatio = 26.667
 UIAspectRatioConstraint_11.Parent = main
-UIAspectRatioConstraint_11.AspectRatio = 2.000
-local function heya()
+UIAspectRatioConstraint_11.AspectRatio = 2.00
+local function PLLQWW() -- topbar.topbarScript 
 	local script = Instance.new('LocalScript', topbar)
-	print("Hello world!")
-	
+	script.Parent.minimize.MouseButton1Click:Connect(function()
+		if script.Parent.index.Visible == true then
+			script.Parent.index.Visible = false
+			script.Parent.minimize.Text = "OPEN"
+		else
+			script.Parent.index.Visible = true
+			script.Parent.minimize.Text = "CLOSE"
+		end
+	end)
+	script.Parent.delete.MouseButton1Click:Connect(function()
+		if script.Parent.delete.Text == "DESTROY" then
+			script.Parent.delete.Text = "U SURE?"
+		else
+			script.Parent.Parent.Parent:Destroy()
+		end
+	end)
 end
-coroutine.wrap(heya)()
-local function ycqg()
+coroutine.wrap(PLLQWW)()
+local function VETW() -- topbar.drag 
 	local script = Instance.new('LocalScript', topbar)
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
-	
 	local gui = script.Parent
-	
 	local dragging
 	local dragInput
 	local dragStart
 	local startPos
-	
 	function Lerp(a, b, m)
 		return a + (b - a) * m
 	end;
 	local lastMousePos
 	local lastGoalPos
-	local DRAG_SPEED = (8);
+	local DRAG_SPEED = (8); -- // The speed of the UI darg.
 	function Update(dt)
 		if not (startPos) then return end;
 		if not (dragging) and (lastGoalPos) then
@@ -211,9 +222,16 @@ local function ycqg()
 	end)
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(ycqg)()
-local function tlpkf()
+coroutine.wrap(VETW)()
+local function TYNOQWN() -- index.indexScript 
 	local script = Instance.new('LocalScript', index)
-	print("Hello world!")
+	script.Parent.greet.Text = "Good exploiting, " .. game:GetService("Players").LocalPlayer.Name
+	script.Parent.avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(game:GetService("Players").LocalPlayer.UserId, Enum.ThumbnailType.AvatarBust, Enum.ThumbnailSize.Size60x60)
+	script.Parent.get.MouseButton1Click:Connect(function()
+		script.Parent.output.Text = tostring(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+	end)
+	script.Parent.clear.MouseButton1Click:Connect(function()
+		script.Parent.output.Text = ""
+	end)
 end
-coroutine.wrap(tlpkf)()
+coroutine.wrap(TYNOQWN())
