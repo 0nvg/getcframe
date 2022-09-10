@@ -21,11 +21,15 @@ local clear = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIAspectRatioConstraint_8 = Instance.new("UIAspectRatioConstraint")
 local UIAspectRatioConstraint_9 = Instance.new("UIAspectRatioConstraint")
+local goto = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
 local UIAspectRatioConstraint_10 = Instance.new("UIAspectRatioConstraint")
 local UIAspectRatioConstraint_11 = Instance.new("UIAspectRatioConstraint")
+local UIAspectRatioConstraint_12 = Instance.new("UIAspectRatioConstraint")
 getCFrame.Name = "getCFrame"
 getCFrame.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 getCFrame.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+getCFrame.ResetOnSpawn = false
 main.Name = "main"
 main.Parent = getCFrame
 main.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
@@ -103,15 +107,15 @@ get.Name = "get"
 get.Parent = index
 get.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 get.BorderSizePixel = 0
-get.Position = UDim2.new(0.0749999955, 0, 0.702702701, 0)
-get.Size = UDim2.new(0, 150, 0, 35)
+get.Position = UDim2.new(0.075000003, 0, 0.702702701, 0)
+get.Size = UDim2.new(0, 100, 0, 35)
 get.Font = Enum.Font.Gotham
-get.Text = "Get CFrame"
+get.Text = "Get"
 get.TextColor3 = Color3.fromRGB(0, 0, 0)
 get.TextSize = 14.000
 UICorner.Parent = get
 UIAspectRatioConstraint_5.Parent = get
-UIAspectRatioConstraint_5.AspectRatio = 4.286
+UIAspectRatioConstraint_5.AspectRatio = 2.857
 avatar.Name = "avatar"
 avatar.Parent = index
 avatar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -140,22 +144,35 @@ clear.Name = "clear"
 clear.Parent = index
 clear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 clear.BorderSizePixel = 0
-clear.Position = UDim2.new(0.550000012, 0, 0.702594578, 0)
-clear.Size = UDim2.new(0, 150, 0, 35)
+clear.Position = UDim2.new(0.675000072, 0, 0.702594638, 0)
+clear.Size = UDim2.new(0, 100, 0, 35)
 clear.Font = Enum.Font.Gotham
-clear.Text = "Clear Output"
+clear.Text = "Clear"
 clear.TextColor3 = Color3.fromRGB(0, 0, 0)
 clear.TextSize = 14.000
 UICorner_2.Parent = clear
 UIAspectRatioConstraint_8.Parent = clear
-UIAspectRatioConstraint_8.AspectRatio = 4.286
+UIAspectRatioConstraint_8.AspectRatio = 2.857
 UIAspectRatioConstraint_9.Parent = index
 UIAspectRatioConstraint_9.AspectRatio = 2.162
-UIAspectRatioConstraint_10.Parent = topbar
-UIAspectRatioConstraint_10.AspectRatio = 26.667
-UIAspectRatioConstraint_11.Parent = main
-UIAspectRatioConstraint_11.AspectRatio = 2.00
-local function PLLQWW() -- topbar.topbarScript 
+goto.Name = "goto"
+goto.Parent = index
+goto.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+goto.BorderSizePixel = 0
+goto.Position = UDim2.new(0.37500003, 0, 0.702702701, 0)
+goto.Size = UDim2.new(0, 100, 0, 35)
+goto.Font = Enum.Font.Gotham
+goto.Text = "Go to"
+goto.TextColor3 = Color3.fromRGB(0, 0, 0)
+goto.TextSize = 14.000
+UICorner_3.Parent = goto
+UIAspectRatioConstraint_10.Parent = goto
+UIAspectRatioConstraint_10.AspectRatio = 2.857
+UIAspectRatioConstraint_11.Parent = topbar
+UIAspectRatioConstraint_11.AspectRatio = 26.667
+UIAspectRatioConstraint_12.Parent = main
+UIAspectRatioConstraint_12.AspectRatio = 2.000
+local function topbarScript()
 	local script = Instance.new('LocalScript', topbar)
 	script.Parent.minimize.MouseButton1Click:Connect(function()
 		if script.Parent.index.Visible == true then
@@ -174,8 +191,8 @@ local function PLLQWW() -- topbar.topbarScript
 		end
 	end)
 end
-coroutine.wrap(PLLQWW)()
-local function VETW() -- topbar.drag 
+coroutine.wrap(topbarScript)()
+local function dragScript()
 	local script = Instance.new('LocalScript', topbar)
 	local UserInputService = game:GetService("UserInputService")
 	local runService = (game:GetService("RunService"));
@@ -189,7 +206,7 @@ local function VETW() -- topbar.drag
 	end;
 	local lastMousePos
 	local lastGoalPos
-	local DRAG_SPEED = (8); -- // The speed of the UI darg.
+	local DRAG_SPEED = (8);
 	function Update(dt)
 		if not (startPos) then return end;
 		if not (dragging) and (lastGoalPos) then
@@ -222,8 +239,8 @@ local function VETW() -- topbar.drag
 	end)
 	runService.Heartbeat:Connect(Update)
 end
-coroutine.wrap(VETW)()
-local function TYNOQWN() -- index.indexScript 
+coroutine.wrap(dragScript)()
+local function indexScript()
 	local script = Instance.new('LocalScript', index)
 	script.Parent.greet.Text = "Good exploiting, " .. game:GetService("Players").LocalPlayer.Name
 	script.Parent.avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(game:GetService("Players").LocalPlayer.UserId, Enum.ThumbnailType.AvatarBust, Enum.ThumbnailSize.Size60x60)
@@ -233,5 +250,8 @@ local function TYNOQWN() -- index.indexScript
 	script.Parent.clear.MouseButton1Click:Connect(function()
 		script.Parent.output.Text = ""
 	end)
+	script.Parent.goto.MouseButton1Click:Connect(function()
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(table.unpack(script.Parent.output.Text:gsub(" ",""):split(",")))
+	end)
 end
-coroutine.wrap(TYNOQWN())
+coroutine.wrap(indexScript)()
