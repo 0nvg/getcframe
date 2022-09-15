@@ -6,7 +6,7 @@ Star the repo😔😳
 \
 For lazy people like me:
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/aeg-eus/getcframe/main/main.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/0nvg/getcframe/main/main.lua"))()
 ```
 \
 *Preview:*\
